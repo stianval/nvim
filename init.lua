@@ -97,4 +97,4 @@ vim.api.nvim_create_user_command('Plugins', 'edit ~/.config/nvim/lua/config/lazy
 vim.api.nvim_create_user_command('Wez', 'edit ~/.wezterm.lua', {})
 
 require('config.lazy')
-require('config.vscode-tasks')
+require('config.local')
