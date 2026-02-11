@@ -8,11 +8,14 @@ o.cursorline = true
 o.signcolumn = 'yes'
 o.splitright = true
 o.splitbelow = true
+o.autowrite = true
+
 o.foldlevelstart = 99
 o.statuscolumn = '%C%l%s'
 o.list = true
 o.scrolloff = 5
 vim.opt.sessionoptions:remove({'folds'})
+vim.opt.formatoptions:remove({'r','o'})
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
