@@ -16,6 +16,7 @@ o.list = true
 o.scrolloff = 5
 vim.opt.sessionoptions:remove({'folds'})
 vim.opt.formatoptions:remove({'r','o'})
+o.grepprg = 'rg --vimgrep'
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
