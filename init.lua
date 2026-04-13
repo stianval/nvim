@@ -102,3 +102,9 @@ vim.api.nvim_create_user_command('Wez', 'edit ~/.wezterm.lua', {})
 
 require('config.lazy')
 require('config.local')
+
+local gitsigns = require('gitsigns')
+local function blame_line()
+    gitsigns.blame_line({full = true})
+end
+map('n', '<leader>gb', blame_line)
