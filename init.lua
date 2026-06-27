@@ -97,6 +97,7 @@ augroup('fold_filetypes', {}, function(autocmd)
 end)
 
 vim.api.nvim_create_user_command('RC', 'edit $MYVIMRC', {})
+vim.api.nvim_create_user_command('SSH', 'edit ~/.ssh/config', {})
 vim.api.nvim_create_user_command('Plugins', 'edit ~/.config/nvim/lua/config/lazy-setup.lua', {})
 vim.api.nvim_create_user_command('Wez', 'edit ~/.wezterm.lua', {})
 
