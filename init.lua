@@ -36,7 +36,14 @@ map('t', '<C-l>', '<C-\\><C-n><C-w>l')
 
 map('c', '<C-a>', '<Home>')
 
-map('n', '<C-x>', '<cmd>tab split<cr>')
+local function toggle_expand_window()
+    if #vim.api.nvim_tabpage_list_wins(0) == 1 then
+        vim.cmd.tabclose()
+    else
+        vim.cmd('tab split')
+    end
+end
+map({'n', 't'}, '<C-x>', toggle_expand_window)
 map('n', '<leader>q', '<cmd>b# | bd#<cr>')
 
 map('n', '<C-/>', 'gcc', { remap = true })
