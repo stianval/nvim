@@ -114,9 +114,9 @@ require("lazy").setup({
       'nvim-telescope/telescope.nvim', tag = '0.1.8',
       dependencies = { 'nvim-lua/plenary.nvim' },
       keys = {
-          {'<leader>p', '<cmd>Telescope find_files<cr>'},
-          {'<leader>pp', '<cmd>Telescope find_files<cr>'},
-          {'<leader>pq', '<cmd>Telescope quickfix<cr>'},
+          {'<leader>tf', '<cmd>Telescope find_files<cr>'},
+          {'<leader>tq', '<cmd>Telescope quickfix<cr>'},
+          {'<leader>tg', '<cmd>Telescope live_grep<cr>'},
       }
     },
     {
