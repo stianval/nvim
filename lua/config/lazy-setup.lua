@@ -1,5 +1,4 @@
 -- vim: fdl=2 fdm=expr
-
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
@@ -10,15 +9,15 @@ require("lazy").setup({
       dependencies = { 'rktjmp/lush.nvim' },
       config = function()
         require('bluloco').setup({
-          style = 'light',               -- 'auto' | 'dark' | 'light'
+          style = 'auto',               -- 'auto' | 'dark' | 'light'
           transparent = false,
           italics = true,
           terminal = vim.fn.has('gui_running') == 1, -- bluoco colors are enabled in gui terminals per default.
-          guicursor = true,
+          guicursor = false,
           rainbow_headings = false,     -- if you want different colored headings for each heading level
         })
 
-        vim.opt.termguicolors = true
+        -- vim.opt.termguicolors = true
         vim.cmd.colorscheme('bluloco')
       end,
     },
@@ -31,7 +30,25 @@ require("lazy").setup({
           globalstatus = true,
         },
         sections = {
-          lualine_x = {'datetime'},
+          lualine_c = {
+              function()
+                  n_tabs = #vim.fn.gettabinfo()
+                  if n_tabs == 1 then return '' end
+                  return '[' .. vim.fn.tabpagenr() .. '/' .. n_tabs .. ']'
+              end,
+              'filename',
+          },
+          lualine_x = {
+            '%S',
+            {'reg_recording', fmt = function(str) 
+              if str == '' then return '' end 
+              return '@' .. str
+            end},
+          },
+          lualine_y = {
+            {'datetime', style = '%a, %b %e | %H:%M'},
+            'progress',
+          },
         },
         winbar = {
           lualine_b = {{'filename', path = 1}},
@@ -60,7 +77,8 @@ require("lazy").setup({
       main = 'treesitter-context',
       opts = {
         enable = true,
-        mode = 'topline',
+        max_lines = 1,
+        -- mode = 'topline',
       },
     },
     {
@@ -100,10 +118,14 @@ require("lazy").setup({
       opts = {},
     },
     {
-      'windwp/nvim-autopairs',
-      event = "InsertEnter",
-      config = true
+        "mason-org/mason.nvim",
+        opts = {}
     },
+    -- {
+    --   'windwp/nvim-autopairs',
+    --   event = "InsertEnter",
+    --   config = true
+    -- },
     {
       'mfussenegger/nvim-dap',
     },
