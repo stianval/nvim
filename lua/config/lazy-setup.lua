@@ -175,6 +175,19 @@ require("lazy").setup({
     {
       'tpope/vim-fugitive',
     },
+    {
+      'nvim-orgmode/orgmode',
+      event = 'VeryLazy',
+      ft = { 'org' },
+      config = function()
+        require('orgmode').setup({
+          org_agenda_files = '~/orgfiles/**/*',
+          org_default_notes_file = '~/orgfiles/log.org',
+        })
+        -- Experimental LSP support
+        vim.lsp.enable('org')
+      end,
+    },
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
